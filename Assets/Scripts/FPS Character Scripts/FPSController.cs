@@ -48,6 +48,9 @@ public class FPSController : MonoBehaviour
     private float nextTimeToFire = 0f;
 
     [SerializeField]
+    public int gameTime = 300;
+
+    [SerializeField]
     private WeaponManager handsWeapon_Manager;
     private FPSHandsWeapon current_Hands_Weapon;
     // Start is called before the first frame update
@@ -70,7 +73,7 @@ public class FPSController : MonoBehaviour
         handsWeapon_Manager.weapons[0].SetActive(true);
         current_Hands_Weapon = handsWeapon_Manager.weapons[0].GetComponent<FPSHandsWeapon>();
 
-
+        StartCoroutine(DestoryAfter(gameTime));
     }
 
     // Update is called once per frame
@@ -78,6 +81,14 @@ public class FPSController : MonoBehaviour
     {
         PlayMovement();
         SelectWeapon();
+    }
+
+
+    private IEnumerator DestoryAfter(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Camera mainCam = transform.Find("FPS View").Find("FPS Camera").GetComponent<Camera>();
+        mainCam.gameObject.SetActive(false);
     }
 
     void PlayMovement() {
