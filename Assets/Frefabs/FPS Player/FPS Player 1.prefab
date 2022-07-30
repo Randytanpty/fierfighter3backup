@@ -938,6 +938,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   weapon_Manager: {fileID: 7020259656119716899}
+  gameTime: 60
   handsWeapon_Manager: {fileID: 7020259655350022094}
 --- !u!114 &7020259655395971275
 MonoBehaviour:
